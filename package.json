@@ -16,6 +16,10 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^6.0.10"
+    "electron": "^6.0.10",
+    "express-generator": "^4.16.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
