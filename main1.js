@@ -1,3 +1,4 @@
+var global_value;
 let fills = document.querySelectorAll('.fill');
 let empties = document.querySelectorAll('.empty');
 
@@ -21,37 +22,29 @@ for (let empty of empties) {
 // Drag Functions
 
 function dragStart() {
-  let temp = fills
-  console.log(1);
-  temp = this.id;
-  console.log(temp + "aks");
+  global_value = this.id;
+  console.log(global_value);
   this.className += ' hold';
-  return temp;
 }
 
 function dragEnd() {
-  console.log(2);
   this.className = 'fill';
 }
 
 function dragOver(e) {
-  console.log(3);
   e.preventDefault();
 }
 
 function dragEnter(e) {
-  console.log(4);
   e.preventDefault();
   this.className += ' hovered';
 }
 
 function dragLeave() {
-  console.log(5);
   this.className = 'empty';
 }
 
 function dragDrop(e) {
-  dragStart();
   this.className = 'empty';
-  this.append();
+  this.append(fills[global_value-1]);
 }
