@@ -20,7 +20,6 @@ for (let empty of empties) {
 }
 
 // Drag Functions
-
 function dragStart() {
   global_value = this.id;
   console.log(global_value);
