@@ -1,0 +1,35 @@
+body{
+	background: blue;
+}
+
+.fill{
+	background-image: url('');
+	position: relative;
+	height: 100px;
+	width: 100px;
+	top: 5px;
+	left: 5px;
+	cursor: pointer;
+}
+
+.empty{
+	display: inline-block;
+	height: 160px;
+	width: 160px;
+	margin: 10px;
+	border: 3px red;
+	background-color: black;
+}
+
+.hold{
+	border: solid grey 4px;
+}
+
+.hovered{
+	background-color: grey;
+	border-style: dashed;
+}
+
+.invisible{
+	display: none;
+}
