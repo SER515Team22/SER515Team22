@@ -1,10 +1,11 @@
 var global_value;
+var dynamic_src = '';
 let fills = document.querySelectorAll('.fill');
 let empties = document.querySelectorAll('.empty');
 
 // Fill listeners
-console.log(fills);
-console.log(empties);
+// console.log(fills);
+// console.log(empties);
 
 
 for (let fill of fills){
@@ -22,7 +23,7 @@ for (let empty of empties) {
 // Drag Functions
 function dragStart() {
   global_value = this.id;
-  console.log(global_value);
+  dynamic_src = this.src;
   this.className += ' hold';
 }
 
@@ -45,5 +46,10 @@ function dragLeave() {
 
 function dragDrop(e) {
   this.className = 'empty';
-  this.append(fills[global_value-1]);
+
+  let img = this.getElementsByTagName('img')[0];
+  img.src = dynamic_src;
+  
+  // console.log(global_value);
+  // this.append(fills[global_value-1]);
 }
