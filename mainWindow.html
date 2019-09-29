@@ -11,9 +11,12 @@
 <title>Calculator</title>
 
 </head>
+
 <body>
-    <div class="split left" >
-    <h2>Operands</h2>
+
+    <div class="split left">
+    	<div>
+    		<h2>Operands</h2>
         <div class="col-sm-0">
             <img src="css\images\1.svg" id = "1" class="fill" draggable = "true">
 <!--         </div>
@@ -33,18 +36,36 @@
             <img src="css\images\6.svg" id = "6" class="fill" draggable = "true">
         </div>
         <div class="col-sm-0">
-<!--             <img src="css\images\7.svg" id = "7" class="fill" draggable = "true">
-        </div>
-        <div class="col-sm-0"> -->
-            <img src="css\images\8.svg" id = "8" class="fill" draggable = "true">
+            <img src="css\images\7.svg" id = "7" class="fill" draggable = "true">
+<!--         </div>
+        <div class="col-sm-0">
+ -->            <img src="css\images\8.svg" id = "8" class="fill" draggable = "true">
 <!--         </div>
         <div class="col-sm-0"> -->
             <img src="css\images\9.svg" id = "9" class="fill" draggable = "true">
         </div>
+<br>
+        <div>
+        	<h2 align="left">Operators</h2>
+        </div>
+    	</div>
+    
     </div>
 <!-- Added an empty img tag... It wil get updated once something is dragged on to it.. -->
     <div class="split right">
-        <div class="col-md-8">
+    	<div class="right_text">
+    		<h1>Work Space</h1>
+
+	    	<h4>Instructions </h4>
+	    	<p>
+	    		1) Drag and drop the operands and operators from the side panel to the workspace window <br>
+		    	2) When completed click on the evaluate button to generate the output of espression <br>
+		    	3) If you want to clear last dragged item, click on Clear button <br>
+		    	4) To clear the workspace click on Clear All button
+	    	</p>
+    	</div>
+    	<br><br><br><br><br><br><br><br>
+        <div class="col-md-8" align="center">
         <div class="empty">
             <img src="" id = "">
         </div>
@@ -59,6 +80,16 @@
                 <img src="" id = "ep1">
             </div>
     	</div>
+<br><br><br><br><br><br><br><br>
+    	<div>
+    		<button class="button col-md-6">Evaluate Expression</button>
+    		<dir class="space"></dir>
+    		<button class="disabled_button" >CLear Last</button>
+    	</div>
+<!-- <br><br><br>
+    	<div>
+    		<button class="disabled_button" >CLear Last</button>
+    	</div> -->
     </div>
 
 <script src="main1.js"></script>

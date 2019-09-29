@@ -24,6 +24,7 @@ for (let empty of empties) {
 function dragStart() {
   global_value = this.id;
   dynamic_src = this.src;
+  console.log(dynamic_src);
   this.className += ' hold';
 }
 
@@ -48,6 +49,7 @@ function dragDrop(e) {
   this.className = 'empty';
 
   let img = this.getElementsByTagName('img')[0];
+  console.log(img);
   img.src = dynamic_src;
   
   // console.log(global_value);
