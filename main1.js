@@ -1,11 +1,9 @@
 var global_value;
 var dynamic_src = '';
+var expression = '';
+var URL = '';
 let fills = document.querySelectorAll('.fill');
 let empties = document.querySelectorAll('.empty');
-
-// Fill listeners
-// console.log(fills);
-// console.log(empties);
 
 
 for (let fill of fills){
@@ -47,6 +45,9 @@ function dragLeave() {
 
 function dragDrop(e) {
   this.className = 'empty';
+  console.log(expression);
+  expression = expression + global_value;
+  console.log(expression);
 
   let img = this.getElementsByTagName('img')[0];
   console.log(img);
@@ -54,4 +55,27 @@ function dragDrop(e) {
   
   // console.log(global_value);
   // this.append(fills[global_value-1]);
+}
+
+
+function evaluateExp() {
+  
+  var URL = URL;
+  var data = expression;
+
+  $.ajax({
+          dataType: 'json',
+          url: URL,
+          type: "POST",
+          data: data,
+          // cache: false,
+
+        success: function(data){
+          console.log('data sent');
+        },
+
+        error: function(){
+            alert("Unable to evaluate, contact admin");
+        }
+          });
 }
