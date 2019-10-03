@@ -39,12 +39,7 @@
 	
   } );
  
-function dragStart(ev) {
-var imageUrl = evt.dataTransfer.getData('URL');
-   ev.dataTransfer.effectAllowed='move';
-   ev.dataTransfer.setData("URL", ev.target.getAttribute('id'));   ev.dataTransfer.setDragImage(ev.target,100,100);
-   return true;
-}
+
  </script>
 </head>
 <body>
@@ -55,9 +50,12 @@ var imageUrl = evt.dataTransfer.getData('URL');
 <div class="col-lg-6">
  <div id="effect0" style="background-color:grey" draggable="true">
      <p>
-      <img id="imgseven" draggable="true" ondragstart="dragStart(event)" src= "seven.png"></img>
-	  <img id="imgplus" draggable="true" ondragstart="dragStart(event)" src= "plus.png"></img>
-	  <img id="imgsix" draggable="true" ondragstart="dragStart(event)" src= "six.png"></img>
+      <img id="+" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\plus.png"></img>
+	  <img id="-" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\minus.png"></img>
+	  <img id="(" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\left-bracket.png"></img>
+	  <img id=")" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\right-bracket.png"></img>
+	  <img id="/" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\divide.png"></img>
+	  <img id="*" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\multiply.png"></img>
 	  </p>
 	  </div>
     </div>
@@ -73,11 +71,13 @@ var imageUrl = evt.dataTransfer.getData('URL');
    
  
       <p>
-    
-      <img src= "seven.png"></img>
-	  <img src= "plus.png"></img>
-	  <img src= "six.png"></img>
-	  </p>
+      <img id="+" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\plus.png"></img>
+	  <img id="-" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\minus.png"></img>
+	  <img id="(" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\left-bracket.png"></img>
+	  <img id=")" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\right-bracket.png"></img>
+	  <img id="/" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\divide.png"></img>
+	  <img id="*" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\multiply.png"></img>
+   
 	  </div>
     
 </div>
