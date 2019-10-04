@@ -71,7 +71,7 @@ function evaluateExp() {
           // cache: false,
 
         success: function(data){
-          console.log('data sent');
+          alert(data);
         },
 
         error: function(){
