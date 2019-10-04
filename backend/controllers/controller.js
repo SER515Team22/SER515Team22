@@ -15,14 +15,35 @@ exports.evaluate = (req, res) => {
     );
 
     expression.save(function (err) {
-        if (err) {
+		var x = "";
+		var er = "";
+		var error = "";
+        if (err) { 
             return next(err);
         }
 
         let data = {"soln": "", "status": "Success"};
-        let x = calc.evaluate((req.body.exp)).toString();
-        data['soln'] = x;
-        res.send(data);
+		try{
+			let x = calc.evaluate((req.body.exp)).toString();
+		}
+		catch(err) {
+			er = err.toString();
+			//var err = " ";
+			if(er.indexOf(" Parenthesis ") != -1) {
+				error = "Make sure paranthesis is balanced";
+			} else if(er.includes("Value expected") != -1) {
+				error = "Number missing after operator";
+				}
+		}
+		if(error) {
+			console.log(error);
+			data['soln'] = "error";
+			data['status'] = "Failed with Error" + error
+			res.send(data);
+		}  else {
+			data['soln'] = x;
+			res.send(data);
+		}
     })
 
 
