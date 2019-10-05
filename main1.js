@@ -63,7 +63,7 @@ function evaluateExp() {
   var URL = URL;
   var data = expression;
 
-  alert(data);
+  alert(eval(data));
 
   // $.ajax({
   //         dataType: 'json',
