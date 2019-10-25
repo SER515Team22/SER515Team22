@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const expression_controller = require('../controllers/controller');
+const expression_controller = require('../controllers/expressionController');
 
 
-router.get('/', expression_controller.root);
-router.post('/evaluate',  expression_controller.evaluate);
+router.get('/', expressionController.root);
+router.post('/evaluate',  expressionController.evaluate);
+router.post('/register', authController.register);
 module.exports = router;
