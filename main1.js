@@ -1,4 +1,5 @@
 var global_value;
+var buffer;
 var dynamic_src = '';
 var expression = '';
 var URL = '';
@@ -46,6 +47,7 @@ function dragLeave() {
 function dragDrop(e) {
   this.className = 'empty';
   console.log(expression);
+  buffer = global_value;
   expression = expression + global_value;
   console.log(expression);
 
@@ -56,6 +58,11 @@ function dragDrop(e) {
   // console.log(global_value);
   // this.append(fills[global_value-1]);
 }
+
+function clearLast() {
+  expression = expression - buffer;
+  this.className = 'empty';
+} 
 
 
 function evaluateExp() {
