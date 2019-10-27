@@ -8,6 +8,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    // run the currently selected effect
+    function Reset() {
+     
+	  $( ".empty" ).empty();
+    };
+ 
+    $( "#button" ).on( "click", function() {
+      Reset();
+    });
+	
+  });
+ </script>
+
 <title>Calculator</title>
 
 </head>
@@ -38,15 +55,30 @@
             <img src="css\images\7.svg" id = "7" class="fill" draggable = "true">
 <!--         </div>
         <div class="col-sm-0">
- -->            <img src="css\images\8.svg" id = "8" class="fill" draggable = "true">
+ -->         <img src="css\images\8.svg" id = "8" class="fill" draggable = "true">
 <!--         </div>
         <div class="col-sm-0"> -->
             <img src="css\images\9.svg" id = "9" class="fill" draggable = "true">
         </div>
+        <div>
+        	<img src="css\images\0.svg" id = "9" class="fill" draggable = "true">
+        </div>
 <br>
         <div>
         	<h2 align="left">Operators</h2>
+        <div>
+			<img id="+" draggable="true" class="fill"  src= "css\images\plus.svg" style = "height: 30px">
+
+			<img id="-" draggable="true" class="fill"  src= "css\images\minus.svg" style = "height: 30px">
+<!-- 			<img id="(" draggable="true" class="fill"  src= "css\images\left-bracket.png">
+			<img id=")" draggable="true" class="fill"  src= "css\images\right-bracket.png"> -->
+			<img id="/" draggable="true" class="fill"  src= "css\images\division.svg" style = "height: 30px">
+
+			<img id="*" draggable="true" class="fill"  src= "css\images\multiply.svg" style = "height: 30px">
         </div>
+
+        </div>
+
     	</div>
     
     </div>
@@ -64,7 +96,7 @@
 	    	</p>
     	</div>
     	<br><br><br><br><br><br><br><br>
-        <div class="col-md-8" align="center">
+        <div class="col-md-8" align="center" id="effect">
         <div class="empty">
             <img src="" id = "">
         </div>
@@ -78,12 +110,21 @@
     		<div class="empty">
                 <img src="" id = "ep1">
             </div>
+
+			<div class="empty">
+			<img src="" id = "ep1">
+			</div>
+
+			<div class="empty">
+			<img src="" id = "ep1">
+			</div>
     	</div>
 <br><br><br><br><br><br><br><br>
     	<div>
     		<button class="button col-md-6" onclick="evaluateExp()">Evaluate Expression</button>
     		<dir class="space"></dir>
-    		<button class="disabled_button" >CLear Last</button>
+    		<td>
+    		<button id="button" onclick="">Clear All</button>
     	</div>
 <!-- <br><br><br>
     	<div>

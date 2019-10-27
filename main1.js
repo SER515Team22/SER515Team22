@@ -63,19 +63,21 @@ function evaluateExp() {
   var URL = URL;
   var data = expression;
 
-  $.ajax({
-          dataType: 'json',
-          url: URL,
-          type: "POST",
-          data: data,
-          // cache: false,
+  alert(eval(data));
 
-        success: function(data){
-          console.log('data sent');
-        },
+  // $.ajax({
+  //         dataType: 'json',
+  //         url: URL,
+  //         type: "POST",
+  //         data: data,
+  //         // cache: false,
 
-        error: function(){
-            alert("Unable to evaluate, contact admin");
-        }
-          });
+  //       success: function(data){
+  //         alert(data);
+  //       },
+
+  //       error: function(){
+  //           alert("Unable to evaluate, contact admin");
+  //       }
+  //         });
 }
