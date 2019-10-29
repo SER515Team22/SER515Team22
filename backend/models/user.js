@@ -1,48 +1,56 @@
-var mongoose = require('mongoose');
-var bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+var crypto = require('crypto');
+var jwt = require('jsonwebtoken');
 
-// User Schema
-var UserSchema = mongoose.Schema({
-  username: {
-    type: String,
-    index:true
-  },
-  password: {
-    type: String
-  },
-  email: {
-    type: String
-  },
-  name: {
-    type: String
-  }
-});
+// var secret = require('../config').secret;
+var secret = "idhant is a good boy";
 
-var User = module.exports = mongoose.model('User', UserSchema);
+// var uniqueValidator = require('mongoose-unique-validator');
 
-module.exports.createUser = function(newUser, callback){
-  bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(newUser.password, salt, function(err, hash) {
-      newUser.password = hash;
-      newUser.save(callback);
-    });
-  });
-}
+let UserSchema = new Schema({
+    type: {type: String, required: true},
+    username: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
+    email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
+    hash: String,
+    salt: String
+},
+{timestamps: true});
+
+UserSchema.methods.setPassword = function(password){
+  this.salt = crypto.randomBytes(16).toString('hex');
+  this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+};
+
+UserSchema.methods.validPassword = function(password) {
+  // console.log(UserSchema.findOne({username: "idhant96"}));
+ var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+ return this.hash === hash;
+};
+
+UserSchema.methods.generateJWT = function() {
+    var today = new Date();
+    var exp = new Date(today);
+    exp.setDate(today.getDate() + 60);
+
+  return jwt.sign({
+    id: this._id,
+    username: this.username,
+    exp: parseInt(exp.getTime() / 1000),
+  }, secret);
+};
+
+UserSchema.methods.toAuthJSON = function(){
+    return {
+      username: this.username,
+      email: this.email,
+      token: this.generateJWT(),
+      bio: this.bio,
+      image: this.image
+    };
+  };
 
 
+// UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
-module.exports.getUserByUsername = function(username, callback){
-  var query = {username: username};
-  User.findOne(query, callback);
-}
-
-module.exports.getUserById = function(id, callback){
-  User.findById(id, callback);
-}
-
-module.exports.comparePassword = function(candidatePassword, hash, callback){
-  bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
-    if(err) throw err;
-    callback(null, isMatch);
-  });
-}
+module.exports = mongoose.model('User', UserSchema);
