@@ -12,3 +12,12 @@ let ExpressionSchema = new Schema({
 });
 
 module.exports = mongoose.model('Expression', ExpressionSchema);
+
+let FacultyQuestions = new Schema({
+	user_id: {type: Number, required: true},
+	standard: {type: String, required: true},
+	question: {qid: Number, Question: String},
+	timestamp: {type: String, required: false}
+});
+
+module.exports = mongoose.model('FacultyPost', FacultyQuestions);
