@@ -28,14 +28,22 @@ exports.register = (req, res) => {
       }
       res.send({"status": "Registered"});
     })
- 
 }
 
 exports.login = (req, res) => {
-  // var users = new Users();
+  var salt;
+  let pass2;
+  let user = new Users();
   var users = mongoose.model('User');
-  console.log(users.findOne({username: "idhant96"}, 'password'));
-  // let user = new Users();
-  // user.validPassword(req.body.password);
-  // res.send(user.findOne());
+  users.findOne({username: req.body.username}, (err, data) => {
+    if(err){
+      console.log(err);
+      return err;
+    }
+    console.log(data.username);
+    salt = data.salt;
+    pass2 = data.hash;
+    if (user.creatAndCompare(req.body.password, pass2, salt))
+      res.send(user.toAuthJSON(data));
+  });
 }

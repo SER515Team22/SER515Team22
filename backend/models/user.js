@@ -22,31 +22,37 @@ UserSchema.methods.setPassword = function(password){
   this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
 };
 
+UserSchema.methods.creatAndCompare = (password1, password2, salt) => {
+  // salt = new Buffer(salt, 'binary');
+  hash = crypto.pbkdf2Sync(password1, salt, 10000, 512, 'sha512').toString('hex');
+  if (hash === password2)
+    return true;
+  return false;
+}
+
 UserSchema.methods.validPassword = function(password) {
   // console.log(UserSchema.findOne({username: "idhant96"}));
  var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
  return this.hash === hash;
 };
 
-UserSchema.methods.generateJWT = function() {
+UserSchema.methods.generateJWT = function(user) {
     var today = new Date();
     var exp = new Date(today);
     exp.setDate(today.getDate() + 60);
 
   return jwt.sign({
-    id: this._id,
-    username: this.username,
+    id: user.id,
+    username: user.username,
     exp: parseInt(exp.getTime() / 1000),
   }, secret);
 };
 
-UserSchema.methods.toAuthJSON = function(){
+UserSchema.methods.toAuthJSON = function(user){
     return {
-      username: this.username,
-      email: this.email,
-      token: this.generateJWT(),
-      bio: this.bio,
-      image: this.image
+      username: user.username,
+      email: user.email,
+      token: this.generateJWT(user)
     };
   };
 

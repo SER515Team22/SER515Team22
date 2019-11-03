@@ -23,10 +23,5 @@ exports.evaluate = (req, res) => {
         let x = calc.evaluate((req.body.exp)).toString();
         data['soln'] = x;
         res.send(data);
-    })
-
-
-
-
-    
+    })  
 }

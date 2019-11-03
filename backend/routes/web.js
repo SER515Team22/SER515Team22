@@ -1,10 +1,16 @@
 const express = require('express');
+let middleware = require('../middlewares/auth.js');
 const router = express.Router();
 
 const expression_controller = require('../controllers/expressionController');
+const auth_controller = require('../controllers/authController');
 
+// Expression evaluation API
+router.get('/', expression_controller.root);
+router.post('/evaluate',  middleware.checkToken,expression_controller.evaluate);
 
-router.get('/', expressionController.root);
-router.post('/evaluate',  expressionController.evaluate);
-router.post('/register', authController.register);
+// Auth API's
+router.post('/register', auth_controller.register);
+router.post('/login', auth_controller.login);
+
 module.exports = router;
