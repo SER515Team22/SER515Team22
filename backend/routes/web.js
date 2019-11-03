@@ -6,7 +6,7 @@ const expression_controller = require('../controllers/expressionController');
 const auth_controller = require('../controllers/authController');
 
 // Expression evaluation API
-router.get('/', expression_controller.root);
+router.get('/',   middleware.checkToken,expression_controller.root);
 router.post('/evaluate',  middleware.checkToken,expression_controller.evaluate);
 
 // Auth API's

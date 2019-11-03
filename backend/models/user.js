@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
-// var secret = require('../config').secret;
-var secret = "idhant is a good boy";
+var config = require('../config');
 
 // var uniqueValidator = require('mongoose-unique-validator');
 
@@ -45,7 +44,7 @@ UserSchema.methods.generateJWT = function(user) {
     id: user.id,
     username: user.username,
     exp: parseInt(exp.getTime() / 1000),
-  }, secret);
+  }, config.secret);
 };
 
 UserSchema.methods.toAuthJSON = function(user){

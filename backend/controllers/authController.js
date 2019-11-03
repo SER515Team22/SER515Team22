@@ -40,7 +40,6 @@ exports.login = (req, res) => {
       console.log(err);
       return err;
     }
-    console.log(data.username);
     salt = data.salt;
     pass2 = data.hash;
     if (user.creatAndCompare(req.body.password, pass2, salt))
