@@ -1,8 +1,9 @@
 var global_value;
-var buffer;
+var buffer = '';
 var dynamic_src = '';
 var expression = '';
 var URL = '';
+var global_test;
 let fills = document.querySelectorAll('.fill');
 let empties = document.querySelectorAll('.empty');
 
@@ -52,6 +53,7 @@ function dragDrop(e) {
   console.log(expression);
 
   let img = this.getElementsByTagName('img')[0];
+  global_test = img;
   console.log(img);
   img.src = dynamic_src;
   
@@ -60,8 +62,10 @@ function dragDrop(e) {
 }
 
 function clearLast() {
-  expression = expression - buffer;
-  this.className = 'empty';
+  var temp = "";
+  global_test.src = temp;
+  expression = expression.slice(0,expression.length-1);
+  
 } 
 
 
