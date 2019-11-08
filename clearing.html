@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>.</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <style>
+
+  .toggler { width: 3000px; height: 3000px; }
+  .toggler1 { width: 3000px; height: 3000px; }
+  #button { padding: 0.5em 0.5em; }
+  #effect { width: 1000px; height: 300px; padding: 1em; }
+  #effect0 { width: 1000px; height: 300px; padding: 1em; }
+  #effect h3 { margin: 0.5em; padding: 0.4em; text-align: center; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>  
+  
+
+  $( function() {
+    // run the currently selected effect
+    function Reset() {
+     
+	  $( "#effect" ).empty();
+    };
+ 
+    
+   
+
+    $( "#button" ).on( "click", function() {
+      Reset();
+    });
+	$( "#undo" ).on( "click", function() {
+      undo();
+    });
+	
+  } );
+ 
+
+ </script>
+</head>
+<body>
+ <div class="container-fluid">
+
+   
+<div class="row">
+<div class="col-lg-6">
+ <div id="effect0" style="background-color:grey" draggable="true">
+     <p>
+      <img id="+" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\plus.png"></img>
+	  <img id="-" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\minus.png"></img>
+	  <img id="(" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\left-bracket.png"></img>
+	  <img id=")" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\right-bracket.png"></img>
+	  <img id="/" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\divide.png"></img>
+	  <img id="*" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\multiply.png"></img>
+	  </p>
+	  </div>
+    </div>
+
+	
+  
+  
+    <div class="col-lg-6">
+  
+   <div id="effect" style="background-color:yellow">
+
+
+   
+ 
+      <p>
+      <img id="+" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\plus.png"></img>
+	  <img id="-" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\minus.png"></img>
+	  <img id="(" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\left-bracket.png"></img>
+	  <img id=")" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\right-bracket.png"></img>
+	  <img id="/" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\divide.png"></img>
+	  <img id="*" draggable="true" class="fill"  src= "E:\project22\SER515Team22\css\images\multiply.png"></img>
+   
+	  </div>
+    
+</div>
+</div>
+	  
+  </div>
+
+
+ 
+<button id="button">Reset</button>
+<button id='undo'>Undo</button>
+
+ 
+ 
+</body>
+</html>

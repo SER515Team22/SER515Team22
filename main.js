@@ -1,6 +1,24 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+// var global_value;
+// var dynamic_src = '';
+// var expression = '';
+// var URL = '';
+// let fills = document.querySelectorAll('.fill');
+// let empties = document.querySelectorAll('.empty');
+
+// for (let fill of fills){
+//   fill.addEventListener('dragstart', dragStart);
+//   fill.addEventListener('dragend', dragEnd);
+// }
+// // Loop through empty boxes and add listeners
+// for (let empty of empties) {
+//   empty.addEventListener('dragover', dragOver);
+//   empty.addEventListener('dragenter', dragEnter);
+//   empty.addEventListener('dragleave', dragLeave);
+//   empty.addEventListener('drop', dragDrop);
+// }
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -9,15 +27,15 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 900,
+    height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('loginIndex.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -30,6 +48,68 @@ function createWindow () {
     mainWindow = null
   })
 }
+
+// Drag Functions
+// function dragStart() {
+//   global_value = this.id;
+//   dynamic_src = this.src;
+//   console.log(dynamic_src);
+//   this.className += ' hold';
+// }
+
+// function dragEnd() {
+//   this.className = 'fill';
+// }
+
+// function dragOver(e) {
+//   e.preventDefault();
+// }
+
+// function dragEnter(e) {
+//   e.preventDefault();
+//   this.className += ' hovered';
+// }
+
+// function dragLeave() {
+//   this.className = 'empty';
+// }
+
+// function dragDrop(e) {
+//   this.className = 'empty';
+//   console.log(expression);
+//   expression = expression + global_value;
+//   console.log(expression);
+
+//   let img = this.getElementsByTagName('img')[0];
+//   console.log(img);
+//   img.src = dynamic_src;
+  
+//   // console.log(global_value);
+//   // this.append(fills[global_value-1]);
+// }
+
+
+// function evaluateExp() {
+  
+//   var URL = URL;
+//   var data = expression;
+
+//   $.ajax({
+//           dataType: 'json',
+//           url: URL,
+//           type: "POST",
+//           data: data,
+//           // cache: false,
+
+//         success: function(data){
+//           console.log('data sent');
+//         },
+
+//         error: function(){
+//             alert("Unable to evaluate, contact admin");
+//         }
+//           });
+// }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
