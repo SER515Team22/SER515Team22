@@ -18,6 +18,7 @@ exports.register = (req, res) => {
           username: req.body.username,
           email: req.body.email,
           hash: req.body.password,
+          standard: req.body.standard
         }
         
     );
@@ -40,6 +41,7 @@ exports.login = (req, res) => {
       console.log(err);
       return err;
     }
+    console.log(data)
     salt = data.salt;
     pass2 = data.hash;
     if (user.creatAndCompare(req.body.password, pass2, salt))
