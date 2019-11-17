@@ -17,7 +17,10 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "express-generator": "^4.16.1",
-    "nodemon": "^1.19.2"
+    "mocha": "^6.2.2",
+    "nodemon": "^1.19.2",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "electron": "^6.0.10",
