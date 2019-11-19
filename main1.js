@@ -59,25 +59,45 @@ function dragDrop(e) {
 
 
 function evaluateExp() {
-  
-  var URL = URL;
+
   var data = expression;
 
   alert(eval(data));
 
-  // $.ajax({
-  //         dataType: 'json',
-  //         url: URL,
-  //         type: "POST",
-  //         data: data,
-  //         // cache: false,
+}
 
-  //       success: function(data){
-  //         alert(data);
-  //       },
+function evaluateExpStd1(){
 
-  //       error: function(){
-  //           alert("Unable to evaluate, contact admin");
-  //       }
-  //         });
+  var data = expression;
+
+  console.log(data)
+
+  var position = data.search('g') || data.search('l') || data.search('e') || data.search('n')
+
+  console.log(position)
+
+  if (position == -1){
+    alert("incorrect input")
+  }
+
+  var operator1 = data.slice(0, position)
+  var operator2 = data.slice(position + 1,)
+
+
+  if ((operator1 > operator2) && (data.slice(position, position+1) == 'g')){
+    alert(operator1 + " is greater than " + operator2)
+  }
+
+  else if ((operator1 < operator2) && (data.slice(position, position+1) == 'l')){
+    alert(operator1 + " is less than " + operator2)
+  }
+
+  else if ((operator1 == operator2) && (data.slice(position, position+1) == 'e')){
+    alert("The numbers are equal")
+  }
+
+  else if ((operator1 != operator2) && (data.slice(position, position+1) == 'n')){
+    alert("The numbers are not equal")
+  }
+
 }
