@@ -1,3 +1,5 @@
+//Author Name : Prashant Singh
+
 var global_value;
 var dynamic_src = '';
 var expression = '';
@@ -99,5 +101,31 @@ function evaluateExpStd1(){
   else if ((operator1 != operator2) && (data.slice(position, position+1) == 'n')){
     alert("The numbers are not equal")
   }
+}
 
+function sendFormDataViewSubmission(){
+
+  alert("method called")
+
+  $(document).ready(function(){
+  $("#getSubmissionDetails").click(function(e)
+  {
+  var form = $("#submissionView").serializeJSON();
+   $.ajax(
+   {
+   url : "",
+   type: "POST",
+   data : {valArray:form},
+   success:function(data)
+   {
+    catchData()
+   },
+   error: function(jqXHR, textStatus, errorThrown)
+   {
+   }
+   });
+   e.preventDefault(); //STOP default action
+
+  });
+  });
 }
