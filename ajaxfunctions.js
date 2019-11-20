@@ -1,8 +1,12 @@
+<!--Author : Gayathri Sitaraman -->
+
+
+
 
 var token = "";
 var standard = "";
 var type = "";
-
+//Function to evaluate
 function evalexpr() {
     var access_token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1NzgyNjkwMTcsImlhdCI6MTU3MzA4NTAxN30.FXlY086WPuh1VPwBhtoRkqI_T_Tx5duZoMzB3FA_x_4";  
     $.ajax({
@@ -24,6 +28,9 @@ function evalexpr() {
     error: function (e) { console.log(e); },
     });
   }
+
+
+//Fucntion to send login data
 
 function sendData() {
     console.log("hellooo");
@@ -50,24 +57,66 @@ function sendData() {
 		token = data.token;
 		standard = data.standard;
 		type = data.type;
-
-        if (type == "faculty"){
-            window.location.href = "facultyOption.html";
-        }
-
-        if (type == "student" && standard == "1"){
-            window.location.href = "mainWindowStd1.html";
-        }
-
-        if (type == "student" && standard == "6"){
-            window.location.href = "mainWindow.html";
-        }
     },
     error: function (e) {
 	    alert("ERROR: ", e.statusText);
 	    token = "";
+            type = "";
     }
     });
     console.log(token,standard,type);
+     if (type == "Faculty"){
+            window.location.href = "facultyOption.html";
+        }
 
+        if (type == "Student" && standard == "1"){
+            window.location.href = "mainWindowStd1.html";
+        }
+
+        if (type == "Student" && standard == "6"){
+            window.location.href = "mainWindowStd6.html";
+        }
+
+}
+
+
+//Function to send registration data
+
+function sendRegistrationDetails(){
+    console.log("hdsjhjhsdjhh");
+	var status = "";
+	var data = {
+		username: document.getElementById('name').value,
+		email: document.getElementById('email').value,
+                type: document.getElementById('input').value,
+		password: document.getElementById('pwd').value,
+                standard: document.querySelector('#grade').value
+	}
+	console.log("Before stringify",data);
+	dobj= JSON.stringify(data);
+	console.log(dobj);
+	$.ajax({
+		type: "POST",
+                url: "http://54.190.28.10:3000/register",
+		data: dobj,
+		contentType: "application/json; charset=utf-8",
+		async: false,
+		cache: true,
+		dataType: "JSON",
+		success: function(data) {
+			console.log("Register ", data);
+	                status = data.status;
+		},
+		error: function (e) {
+			console.log("ERROR: ", e.statusText);
+		}
+    });
+
+    if(status == "Not registered") {
+	    console.log("not registered");
+	    alert(status);
+    }
+	else {
+		window.location.href = "loginIndex.html";
+	}
 }
