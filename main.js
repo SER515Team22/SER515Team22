@@ -27,15 +27,15 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 1200,
+    width: 900,
+    height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('loginIndex.html')
+  mainWindow.loadFile('mainWindow.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
