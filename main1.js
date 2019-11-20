@@ -64,7 +64,13 @@ function evaluateExp() {
   var data = expression;
 
   alert(eval(data));
+//logout
+function logout(){
 
+	
+	window.location.href = "loginIndex.html";
+	
+}
   // $.ajax({
   //         dataType: 'json',
   //         url: URL,
