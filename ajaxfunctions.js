@@ -50,9 +50,21 @@ function sendData() {
 		token = data.token;
 		standard = data.standard;
 		type = data.type;
+
+        if (type == "faculty"){
+            window.location.href = "facultyOption.html";
+        }
+
+        if (type == "student" && standard == "1"){
+            window.location.href = "mainWindowStd1.html";
+        }
+
+        if (type == "student" && standard == "6"){
+            window.location.href = "mainWindow.html";
+        }
     },
     error: function (e) {
-	    console.log("ERROR: ", e.statusText);
+	    alert("ERROR: ", e.statusText);
 	    token = "";
     }
     });
