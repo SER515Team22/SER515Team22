@@ -1,0 +1,62 @@
+<!--
+Author Name : Prashant Singh
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="main1.js"></script>
+
+<head>
+	<meta charset="UTF-8">
+	<title>View Submissions</title>
+</head>
+<div class="divBack" style = "font-family: Raleway">
+	<body class="col-md-4 fullBack submission" style="text-align: left;">
+	<h1>Select the assignment submission you want to view</h1>
+    <form name = "submissionView" id = "submissionView" method="POST">
+       <fieldset>
+          <p>
+             <label>Select standard</label>
+             <select id = "standardList">
+               <option value = "1">Standard 1</option>
+               <option value = "2">Standard 6</option>
+             </select>
+          </p>
+       </fieldset>
+
+       <fieldset>
+          <p>
+             <label>Select Assignment Number</label>
+             <select id = "assignmentList">
+               <option value = "3">Assignment 1</option>
+               <option value = "4">Assignment 2</option>
+             </select>
+          </p>
+       </fieldset>
+
+
+       <button type="button" class="btn btn-info" id="getSubmissionDetails" onclick="sendFormDataViewSubmission()">View Submission</button>
+
+    </form>
+	</body>
+</div>
+
+<div>
+	<body>
+		<table id="submissionTable" class="hidden">
+			<tr>
+				<th>Student Username</th>
+				<th>Answers</th>
+			</tr>
+		</table>
+	</body>
+</div>
+
+</html>
