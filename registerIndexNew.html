@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/login1.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Registration
+				</span>
+				<form class="login100-form validate-form p-b-33 p-t-5" action="loginIndex.html" method="POST" id="form">
+
+					<div class="wrap-input100" data-validate = "Enter Account Type">
+					<label class="input100" >Account Type</label>
+						
+						<span class="focus-input100" data-placeholder="&#xe82a"></span>
+						<select id="input" name="account" onchange="showGrade()">
+							<option  id="accS" value="account">Select Account</option>
+							<option  id="accS" value="stu">Student</option>
+							<option  id="accT" value="teach">Faculty</option>
+						</select>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input id="name" class="input100" type="text" name="username" placeholder="User name">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100" id="pwd" data-placeholder="&#xe80f;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Enter email">
+						<input id="email" class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+				<div class="wrap-input100" id="output">
+					
+					<label class="input100" id="grade" >Select Standard</label>
+					<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					<!--<select id="output" name="std">
+						<option></option>
+					</select> --> </div>
+					<!--<span id="output"></span>1 -->
+					<!--<select id="output" name="std">
+					
+					</select>
+				-->
+
+					
+						
+						
+						<div class="container-login100-form-btn m-t-32">
+						<button type="submit" class="login100-form-btn" id="Register" onclick()="sendRegistrationDetails()">
+							Register
+						</button>
+					</div>
+					<span class="response"></span>
+
+				</form>
+			
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/animsition/js/animsition.min.js"></script>
+
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/select2/select2.min.js"></script>
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<script src="js/main.js"></script>
+<!--
+<script>
+<button id="loginB"  >Home</button>
+
+<script type="text/javascript">
+    document.getElementById("loginb").onclick = function () {
+        location.href = "https://www.google.com/";
+    };
+</script>-->
+
+<script>
+
+
+
+
+
+function showGrade()
+{
+var a=document.getElementById('input').value;
+if(a=="stu")
+{
+var array=["1","6"];
+}
+else if(a=="teach")
+{ var array=[];
+}
+
+var string="";
+for(i=0;i<array.length;i++)
+{
+string=string+"<option value="+array[i]+">"+array[i]+"</option>";
+}
+
+string="<select id='grade'><option>Select Standard</option>"+string+"</select>";
+document.getElementById('output').innerHTML=string;
+
+}
+</script>
+<script>
+function sendRegistrationDetails(){
+    //    let register_data = [];
+
+        const addData = (ev)=>{
+            ev.preventDefault();  //to stop the form submitting
+			
+            let data = {
+                id: Date.now(),
+                title: document.getElementById('name').value,
+				 email: document.getElementById('email').value,
+                 actype: document.getElementById('input').value,
+				 password: document.getElementById('pwd').value,
+                 grade: document.querySelector('#grade').value		
+            }
+			
+			 //register_data.push(data);
+           // document.forms[0].reset(); // to clear the form for the next entries
+            //document.querySelector('form').reset();
+            //for display purposes only
+            //console.warn('added' , {register_data} );
+            //let pre = document.querySelector('#msg pre');
+         //   pre.textContent = '\n' + JSON.stringify(register_data, '\t', 2);
+            //saving to localStorage
+           // localStorage.setItem('MyMovieList', JSON.stringify(register_data) );
+        }
+		
+    //    document.addEventListener('DOMContentLoaded', ()=>{
+           // document.getElementById('Register').addEventListener('click', addData);
+        });
+		
+         dobj= JSON.stringify(data);
+		 
+		 $.ajax({
+    type: "POST",
+    url: "http://54.190.28.10:3000/register",
+    data: dobj,
+    contentType: "application/json; charset=utf-8",
+    async: false,
+    cache: true,
+    dataType: "JSON",
+    success: function(data) {
+	console.log("Register ", data);
+    
+    },
+    error: function (e) {
+   console.log("ERROR: ", e.statusText);
+    }
+    });
+		 }
+    </script>
+
+
+<!--<script>
+$(function(){
+
+ var form=$("#form");
+form.s1ubmit(function(e){
+ 
+ $.ajax({
+ type:form.attr("method"), //post
+data:form.serialize(),
+dataType: "json",
+success: function(data)
+{ alert("success");
+${."response"}.text(data.content);
+if(data.response=="success"){
+$(".response").css("color","green");
+}
+else{
+$(".response").css("color","red");
+}
+},
+ error: function(data){
+ alert("fail");
+$(".response").text("error!");
+ }
+ });
+
+ });	
+ });
+</script>
+-->
+
+</body>
+</html>
