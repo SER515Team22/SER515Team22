@@ -1,3 +1,7 @@
+//  Authors:
+//  1. Gayathri Sitaraman
+//  2. Idhant Haldankar
+
 const Assignments = require('../models/assignments');
 const Solutions = require('../models/solutions');
 
