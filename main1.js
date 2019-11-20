@@ -71,19 +71,4 @@ function logout(){
 	window.location.href = "loginIndex.html";
 	
 }
-  // $.ajax({
-  //         dataType: 'json',
-  //         url: URL,
-  //         type: "POST",
-  //         data: data,
-  //         // cache: false,
-
-  //       success: function(data){
-  //         alert(data);
-  //       },
-
-  //       error: function(){
-  //           alert("Unable to evaluate, contact admin");
-  //       }
-  //         });
 }
