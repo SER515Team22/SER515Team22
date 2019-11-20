@@ -35,7 +35,7 @@ function createWindow () {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('mainWindow.html')
+  mainWindow.loadFile('facultyViewSubmissions.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

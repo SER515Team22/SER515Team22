@@ -104,28 +104,36 @@ function evaluateExpStd1(){
 }
 
 function sendFormDataViewSubmission(){
+  var inputs = document.getElementById("submissionView").elements;
+  var standard = inputs["standardList"].value;
+  var assignment = inputs["assignmentList"].value;
+  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
+  dataobj = {
+      "standard": standard,
+      "assignment": assignment
+  }
 
-  alert("method called")
+  dobj = JSON.stringify(dataobj);
+  console.log("Ajax now");
 
-  $(document).ready(function(){
-  $("#getSubmissionDetails").click(function(e)
-  {
-  var form = $("#submissionView").serializeJSON();
-   $.ajax(
-   {
-   url : "",
-   type: "POST",
-   data : {valArray:form},
-   success:function(data)
-   {
-    catchData()
-   },
-   error: function(jqXHR, textStatus, errorThrown)
-   {
-   }
-   });
-   e.preventDefault(); //STOP default action
-
+  $.ajax({
+  type: "GET",
+  beforeSend : function(xhr) {
+    xhr.setRequestHeader("Authorization" , token);
+  },
+  url: "http://54.190.28.10:3000/viewsubmissions",
+  data: dobj,
+  contentType: "application/json; charset=utf-8",
+  async: false,
+  cache: true,
+  dataType: "JSON",
+  success: function(data) {
+  console.log("Done",data);
+  },
+  error: function (e) {
+  console.log("ERROR: ", e.statusText);
+  }
   });
-  });
+  console.log(standard,assignment);
+
 }

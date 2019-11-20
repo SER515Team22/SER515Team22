@@ -92,9 +92,13 @@ body{
 }
 
 .submission{
-/*  background-color:  #FAEBD7
-*/}
+/*  background-color:  #FAEBD7*/
+  background-image: url("back.jpg");
+  background-blend-mode: all;
+}
 
-.fullBack{
-  background-color: #E9967A
+.divBack{
+  background-color: #4c7b71;
+  padding: 30px;
+
 }

@@ -11,14 +11,15 @@ Author Name : Prashant Singh
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="jsonSerialize.js"></script>
 <script src="main1.js"></script>
 
 <head>
 	<meta charset="UTF-8">
 	<title>View Submissions</title>
 </head>
-<div class="submission" style = "font-family: Raleway">
-	<body class="col-md-4 fullBack" style="text-align: left;">
+<div class="divBack" style = "font-family: Raleway">
+	<body class="col-md-4 fullBack submission" style="text-align: left;">
 	<h1>Select the assignment you want to view</h1>
     <form name = "submissionView" id = "submissionView" method="POST">
        <fieldset>
@@ -34,7 +35,7 @@ Author Name : Prashant Singh
        <fieldset>
           <p>
              <label>Select Assignment Number</label>
-             <select id = "standardList">
+             <select id = "assignmentList">
                <option value = "3">Assignment 1</option>
                <option value = "4">Assignment 2</option>
              </select>
