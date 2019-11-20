@@ -57,25 +57,25 @@ function sendData() {
 		token = data.token;
 		standard = data.standard;
 		type = data.type;
-
-        if (type == "faculty"){
-            window.location.href = "facultyOption.html";
-        }
-
-        if (type == "student" && standard == "1"){
-            window.location.href = "mainWindowStd1.html";
-        }
-
-        if (type == "student" && standard == "6"){
-            window.location.href = "mainWindow.html";
-        }
     },
     error: function (e) {
 	    alert("ERROR: ", e.statusText);
 	    token = "";
+            type = "";
     }
     });
     console.log(token,standard,type);
+     if (type == "Faculty"){
+            window.location.href = "facultyOption.html";
+        }
+
+        if (type == "Student" && standard == "1"){
+            window.location.href = "mainWindowStd1.html";
+        }
+
+        if (type == "Student" && standard == "6"){
+            window.location.href = "mainWindowStd6.html";
+        }
 
 }
 
