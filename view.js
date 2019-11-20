@@ -55,10 +55,16 @@ function previousView() {
     pageCount = pageCount - 1;
     var pageNum = document.getElementById("questionNo");
     var previousButton = document.getElementById("previous");
+    var nextButton = document.getElementById("next");
     pageNum.innerHTML = "Question " + pageCount;
     document.getElementById('question').innerHTML = questionArray[pageCount-1];
     if (pageCount == 1) {
         previousButton.style.visibility = 'hidden';
+    }
+    if (pageCount == endPage-1) {
+
+        nextButton.style.visibility = 'visible';
+
     }
 }
 
