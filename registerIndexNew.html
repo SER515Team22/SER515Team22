@@ -1,3 +1,10 @@
+
+<!--
+	1. Rishika bera
+	2. Gayathri Sitaraman
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +41,7 @@
 				<span class="login100-form-title p-b-41">
 					Registration
 				</span>
-				<form class="login100-form validate-form p-b-33 p-t-5" action="loginIndex.html" method="POST" id="form">
+				<form class="login100-form validate-form p-b-33 p-t-5" id="form">
 
 					<div class="wrap-input100" data-validate = "Enter Account Type">
 					<label class="input100" >Account Type</label>
@@ -52,8 +59,8 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100" id="pwd" data-placeholder="&#xe80f;"></span>
+						<input id="pwd" class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100"  data-placeholder="&#xe80f;"></span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Enter email">
 						<input id="email" class="input100" type="text" name="email" placeholder="Email">
@@ -63,20 +70,11 @@
 					
 					<label class="input100" id="grade" >Select Standard</label>
 					<span class="focus-input100" data-placeholder="&#xe82a;"></span>
-					<!--<select id="output" name="std">
-						<option></option>
-					</select> --> </div>
-					<!--<span id="output"></span>1 -->
-					<!--<select id="output" name="std">
-					
-					</select>
-				-->
-
-					
+					</div>
 						
 						
 						<div class="container-login100-form-btn m-t-32">
-						<button type="submit" class="login100-form-btn" id="Register" onclick()="sendRegistrationDetails()">
+						<button type="reset" class="login100-form-btn" id="Register1" onclick="sendRegistrationDetails()">
 							Register
 						</button>
 					</div>
@@ -86,7 +84,7 @@
 			
 		</div>
 	</div>
-	
+	</div>	
 
 	<div id="dropDownSelect1"></div>
 	
@@ -96,28 +94,14 @@
 <script src="vendor/bootstrap/js/popper.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="vendor/select2/select2.min.js"></script>
-<script src="vendor/daterangepicker/moment.min.js"></script>
-<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<script src="vendor/countdowntime/countdowntime.js"></script>
 <script src="js/main.js"></script>
-<!--
-<script>
-<button id="loginB"  >Home</button>
-
-<script type="text/javascript">
-    document.getElementById("loginb").onclick = function () {
-        location.href = "https://www.google.com/";
-    };
-</script>-->
+<script src="ajaxfunctions.js"></script>
 
 <script>
-
-
-
-
 
 function showGrade()
 {
+	console.log("hello now");
 var a=document.getElementById('input').value;
 if(a=="stu")
 {
@@ -138,89 +122,5 @@ document.getElementById('output').innerHTML=string;
 
 }
 </script>
-<script>
-function sendRegistrationDetails(){
-    //    let register_data = [];
-
-        const addData = (ev)=>{
-            ev.preventDefault();  //to stop the form submitting
-			
-            let data = {
-                id: Date.now(),
-                title: document.getElementById('name').value,
-				 email: document.getElementById('email').value,
-                 actype: document.getElementById('input').value,
-				 password: document.getElementById('pwd').value,
-                 grade: document.querySelector('#grade').value		
-            }
-			
-			 //register_data.push(data);
-           // document.forms[0].reset(); // to clear the form for the next entries
-            //document.querySelector('form').reset();
-            //for display purposes only
-            //console.warn('added' , {register_data} );
-            //let pre = document.querySelector('#msg pre');
-         //   pre.textContent = '\n' + JSON.stringify(register_data, '\t', 2);
-            //saving to localStorage
-           // localStorage.setItem('MyMovieList', JSON.stringify(register_data) );
-        }
-		
-    //    document.addEventListener('DOMContentLoaded', ()=>{
-           // document.getElementById('Register').addEventListener('click', addData);
-        });
-		
-         dobj= JSON.stringify(data);
-		 
-		 $.ajax({
-    type: "POST",
-    url: "http://54.190.28.10:3000/register",
-    data: dobj,
-    contentType: "application/json; charset=utf-8",
-    async: false,
-    cache: true,
-    dataType: "JSON",
-    success: function(data) {
-	console.log("Register ", data);
-    
-    },
-    error: function (e) {
-   console.log("ERROR: ", e.statusText);
-    }
-    });
-		 }
-    </script>
-
-
-<!--<script>
-$(function(){
-
- var form=$("#form");
-form.s1ubmit(function(e){
- 
- $.ajax({
- type:form.attr("method"), //post
-data:form.serialize(),
-dataType: "json",
-success: function(data)
-{ alert("success");
-${."response"}.text(data.content);
-if(data.response=="success"){
-$(".response").css("color","green");
-}
-else{
-$(".response").css("color","red");
-}
-},
- error: function(data){
- alert("fail");
-$(".response").text("error!");
- }
- });
-
- });	
- });
-</script>
--->
-
 </body>
 </html>

@@ -1,3 +1,8 @@
+
+//Authors
+//1. Gayathri Sitaraman
+
+
 const Expression = require('../models/expressions');
 const mathobj = require('mathjs');
 

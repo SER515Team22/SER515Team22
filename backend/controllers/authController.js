@@ -1,3 +1,9 @@
+//Authors
+//1. Idhant Haldankar
+//2. Gaytahri Sitaraman
+
+
+
 
 const Users = require('../models/user');
 
