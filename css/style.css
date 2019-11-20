@@ -93,12 +93,21 @@ body{
 
 .submission{
 /*  background-color:  #FAEBD7*/
-  background-image: url("back.jpg");
+  background-image: url("back.png");
   background-blend-mode: all;
 }
 
 .divBack{
-  background-color: #4c7b71;
+  background-color: #739c90;
   padding: 30px;
+  border-radius: 25px;
+  opacity: 90%;
+  padding-left: 50px;
+  margin-left: 20px;
+  margin-top: 40px;
 
+}
+
+.hideTable{
+  display: none;
 }

@@ -129,11 +129,27 @@ function sendFormDataViewSubmission(){
   dataType: "JSON",
   success: function(data) {
   console.log("Done",data);
+  student_id = data.username;
+  answer = data.ans;
+
+  var length = data.length;
+  var disp = "";
+
+  if (length > 0){
+    for (var i = 0 ; i<length; i++){
+      if(data[i].username && data[i].ans){
+        disp += "<tr><td>" + data[i].username + "</td><td>" + data[i].ans + "</td><tr>";
+      }
+    }
+
+    if (disp != ""){
+      $("#submissionTable").append(disp).removeClass("hidden");
+    }
+  }
   },
   error: function (e) {
   console.log("ERROR: ", e.statusText);
   }
   });
   console.log(standard,assignment);
-
 }
