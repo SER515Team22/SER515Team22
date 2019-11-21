@@ -1,5 +1,6 @@
 //Author Name : Prashant Singh
 
+
 var global_value;
 var dynamic_src = '';
 var expression = '';
@@ -62,7 +63,8 @@ function dragDrop(e) {
 
 function evaluateExp() {
   var data = expression;
-  alert(eval(data));
+  //alert(eval(data));
+  evalExpr(data);
 }
 
 function evaluateExpStd1(){
