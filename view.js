@@ -86,17 +86,17 @@ function showAssignment() {
     var answer =  document.getElementById("answer");
     var choose = document.getElementById("choose");
     var assignmentSubmit = document.getElementById("assignmentSubmit");
-    
-    answer.style.visibility = 'hidden';
+
+    answer.style.visibility = 'visible';
     assignmentSubmit.style.visibility = 'hidden';
     questionName.style.visibility = 'hidden';
     pageNum.style.visibility = 'visible';
     nextButton.style.visibility = 'visible';
     question.style.visibility = 'visible';
     sol.style.visibility = 'visible';
-    choose.style.visibility = 'visible';
+    choose.style.visibility = 'hidden';
 
 
 
-}
+}  // added to support drop down
 
