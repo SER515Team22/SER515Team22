@@ -1,8 +1,6 @@
 //Author : Gayathri Sitaraman
-
 //Author Name : Prashant Singh
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk1MDAyMTAsImlhdCI6MTU3NDMxNjIxMH0.s6cpn9rYn1pDhEqmhiCSUQXUfJ3vq2e075m0ClHeBV0";
 var standard = "";
 var type = "";
 
@@ -13,6 +11,7 @@ var URL = '';
 let fills = document.querySelectorAll('.fill');
 let empties = document.querySelectorAll('.empty');
 
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk1MDAyMTAsImlhdCI6MTU3NDMxNjIxMH0.s6cpn9rYn1pDhEqmhiCSUQXUfJ3vq2e075m0ClHeBV0";
 
 
 
@@ -318,7 +317,7 @@ function postAssignment() {
 		console.log("ERROR: ", e.statusText);
 	}
     });
-    
+}    
 	
 
 //Function to view assignment for students
@@ -372,4 +371,23 @@ function getAssignment1(){
   }
   });
   console.log(standard,assignment);
+}
+
+
+//Function to view submissions for faculty
+function viewSubmissions() {
+	var inputs = document.getElementById("assignment1");
+
+  var standard = "standard6";
+  var assignment = "assignment1";
+  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
+  dataobj = {
+      "standard": standard,
+      "assnumber": assignment
+  }
+
+  dobj = JSON.stringify(dataobj);
+
+  
+	
 }
