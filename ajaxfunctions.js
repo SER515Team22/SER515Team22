@@ -13,7 +13,7 @@ var URL = '';
 let fills = document.querySelectorAll('.fill');
 let empties = document.querySelectorAll('.empty');
 
-
+var opt
 
 
 for (let fill of fills){
@@ -275,4 +275,38 @@ function sendRegistrationDetails(){
 	else {
 		window.location.href = "loginIndex.html";
 	}
+}
+
+// added to enable connection to student view 
+function loadAssignments(event){
+  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
+  dobj={
+      "standard":1
+  }
+  dobj = JSON.stringify(dobj);
+  $.ajax({
+      type: "GET",
+      beforeSend : function(xhr) {
+        xhr.setRequestHeader("Authorization" , token);
+      },
+      url: "http://54.190.28.10:3000/viewass",
+      data: dobj,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      cache: true,
+      dataType: "JSON",
+      success: function(data) {
+      console.log("Done",data);
+      for(var i=0; i<data.length;i++){
+
+        opt = "<option>"+data[i].assnumber+"</option>";
+        $("#assignmentsName").append(opt);
+
+      }
+      },
+      error: function (e) {
+      console.log("ERROR: ", e.statusText);
+      }
+      });
+
 }
