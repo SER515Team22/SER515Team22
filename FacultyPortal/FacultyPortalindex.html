@@ -82,7 +82,7 @@
       </div>
     </div>
    <div class="form-style-5">
-<form method="POST">
+<form id="formasspost" action="postAssignment()">
 <fieldset>
 <legend>Posting Assignments</legend>
 <input type="text" name="field0" placeholder="Assignment No." id="assignmentNo">
@@ -100,7 +100,7 @@
 </select>      
 </fieldset>
 
-<input type="submit" value="Submit Questions" />
+<button type="submit" onclick="postAssignment()">Submit Questions</button>
 </form>
 </div>
 <!--
@@ -114,6 +114,7 @@
 <script type="js/main.js"></script>
 <script type="js/post.js"></script>
 <script type="jquery/jquery-3.4.1.min.js"></script>
+<!--
 <script type="text/javascript">
 	$(function() {
       
@@ -137,7 +138,7 @@ timestamp:};
 
 
 
-</script>
+</script> -->
 <style type="text/css">
 .form-style-5{
 	max-width: 500px;
@@ -318,8 +319,9 @@ timestamp:};
 
 
   <script src="js/custom.js"></script>
-<script src="ajaxfunction.js"></script>
-  <script src="contactform/contactform.js"></script>
+  <script src="../ajaxfunctions.js"></script>
+  <!-- <script src="contactform/contactform.js"></script> -->
+
 
 
 </body>

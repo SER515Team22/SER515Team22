@@ -276,3 +276,48 @@ function sendRegistrationDetails(){
 		window.location.href = "loginIndex.html";
 	}
 }
+
+
+
+//Function to post assignment
+
+function postAssignment() {
+    console.log("hellooo");
+    console.log("iSending");
+	const access_token = token; 
+    var ques = ["1","2","3"];
+    var inputs = document.getElementById("formasspost").elements;
+    ques[0] = inputs["question1"].value;
+    ques[1] = inputs["question2"].value;
+    ques[2] = inputs["question3"].value;
+    var assnumber = inputs["assignmentNo"].value;
+    var standard = inputs["grade"].value;
+    var data = {
+		"username" : "idhant96",
+		"assnumber": assnumber,
+		"standard": standard,
+		"questions": ques
+    }
+    var dobj = JSON.stringify(data);
+	$.ajax({
+	type: "POST",
+        url: "http://54.190.28.10:3000/newass",
+	data: dobj,
+	contentType: "application/json; charset=utf-8",
+	async: false,
+	beforeSend : function( xhr ) {
+        xhr.setRequestHeader( "Authorization",access_token );
+    },
+	cache: true,
+	dataType: "JSON",
+	success: function(data) {
+		console.log("post data status ", data);
+	        status = data.status;
+	},
+	error: function (e) {
+		console.log("ERROR: ", e.statusText);
+	}
+    });
+    
+	
+}
