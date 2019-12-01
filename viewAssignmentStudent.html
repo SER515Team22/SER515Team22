@@ -1,0 +1,103 @@
+<!--Author Name : Prashant Singh -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="main1.js"></script>
+	<script src="ajaxfunctions.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+	<meta charset="UTF-8">
+
+	<title>View Assignments</title>
+</head>
+<body>
+	<div style="position: relative; z-index: 5">
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      
+    </div>
+    <ul class="nav navbar-nav">
+      
+      <li><a href="mainWindowStd6.html">Play Ground</a></li>
+      <li><a href="underConstruction6.html">Go to Assignments</a></li>
+      <li><a href="loginIndex.html">Logout</a></li>
+        
+      <p style="position: absolute; right: 50px; top: 20px; font-family: Monotype; font-weight: bold; ">Grade 6 Student portal</p>
+
+    </ul>
+    </div>
+    </nav>
+    </div>
+
+	<div class="split left" style="margin-left: 100px;">
+		<br>
+		<a id = "assignment1" onclick="getAssignment1()">Assignment 1</a>
+		<br><br><br><br>
+		<a id = "assignment2" onclick="getAssignment2()">Assignment 2</a>
+	</div>
+</body>
+
+<script type="text/javascript">
+	function getAssignment1(){
+  var inputs = document.getElementById("assignment1");
+
+  var standard = "standard6";
+  var assignment = "assignment1";
+  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
+  dataobj = {
+      "standard": standard,
+      "assignment": assignment
+  }
+
+  dobj = JSON.stringify(dataobj);
+  console.log("Ajax now");
+
+  $.ajax({
+  type: "GET",
+  beforeSend : function(xhr) {
+    xhr.setRequestHeader("Authorization" , token);
+  },
+  url: "http://54.190.28.10:3000/viewass",
+  data: dobj,
+  contentType: "application/json; charset=utf-8",
+  async: false,
+  cache: true,
+  dataType: "JSON",
+  success: function(data) {
+  console.log("Done",data);
+  student_id = data.username;
+  answer = data.ans;
+
+  var length = data.length;
+  var disp = "";
+
+  if (length > 0){
+    for (var i = 0 ; i<length; i++){
+      if(data[i].username && data[i].ans){
+        disp += "<tr><td>" + data[i].username + "</td><td>" + data[i].ans + "</td><tr>";
+      }
+    }
+
+    if (disp != ""){
+      $("#submissionTable").append(disp).removeClass("hidden");
+    }
+  }
+  },
+  error: function (e) {
+  console.log("ERROR: ", e.statusText);
+  }
+  });
+  console.log(standard,assignment);
+}
+
+</script>
+</html>

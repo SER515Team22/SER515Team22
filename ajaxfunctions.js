@@ -1,4 +1,4 @@
-<!--Author : Gayathri Sitaraman -->
+//Author : Gayathri Sitaraman
 
 //Author Name : Prashant Singh
 
@@ -320,4 +320,56 @@ function postAssignment() {
     });
     
 	
+
+//Function to view assignment for students
+function getAssignment1(){
+  var inputs = document.getElementById("assignment1");
+
+  var standard = "standard6";
+  var assignment = "assignment1";
+  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
+  dataobj = {
+      "standard": standard,
+      "assignment": assignment
+  }
+
+  dobj = JSON.stringify(dataobj);
+  console.log("Ajax now");
+
+  $.ajax({
+  type: "GET",
+  beforeSend : function(xhr) {
+    xhr.setRequestHeader("Authorization" , token);
+  },
+  url: "http://54.190.28.10:3000/viewass",
+  data: dobj,
+  contentType: "application/json; charset=utf-8",
+  async: false,
+  cache: true,
+  dataType: "JSON",
+  success: function(data) {
+  console.log("Done",data);
+  student_id = data.username;
+  answer = data.ans;
+
+  var length = data.length;
+  var disp = "";
+
+  if (length > 0){
+    for (var i = 0 ; i<length; i++){
+      if(data[i].username && data[i].ans){
+        disp += "<tr><td>" + data[i].username + "</td><td>" + data[i].ans + "</td><tr>";
+      }
+    }
+
+    if (disp != ""){
+      $("#submissionTable").append(disp).removeClass("hidden");
+    }
+  }
+  },
+  error: function (e) {
+  console.log("ERROR: ", e.statusText);
+  }
+  });
+  console.log(standard,assignment);
 }
