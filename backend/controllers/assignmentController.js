@@ -58,7 +58,7 @@ exports.submitass = (req, res) => {
 
 exports.viewass = (req, res) => {
     let assignments = mongoose.model('Assignment');
-    assignments.find({std: req.body.standard}, (err, data) => {
+    assignments.find({std: req.query.standard}, (err, data) => {
         if(err){
             // console.log(err);
             res.send({"status": "Fail", "err": "DB error"});
@@ -75,8 +75,8 @@ exports.viewass = (req, res) => {
 
 exports.viewsubmissions = (req, res) => {
     let assignments = mongoose.model('Solution');
-    assignments.find({std: req.body.standard, 
-                      assnumber: req.body.assnumber}, (err, data) => {
+    assignments.find({std: req.query.standard, 
+                      assnumber: req.query.assnumber}, (err, data) => {
                           if (err) {
                             res.send({"status": "Fail", "err": "DB error"});
                             return err;
