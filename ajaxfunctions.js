@@ -99,8 +99,8 @@ function sendFormDataViewSubmission(){
   var assignment = inputs["assignmentList"].value;
   var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
   dataobj = {
-      "standard": standard,
-      "assignment": assignment
+      "standard": "2",
+      "assnumber": "20"
   }
 
   dobj = JSON.stringify(dataobj);
@@ -111,16 +111,16 @@ function sendFormDataViewSubmission(){
   beforeSend : function(xhr) {
     xhr.setRequestHeader("Authorization" , token);
   },
-  url: "http://54.190.28.10:3000/viewsubmissions",
+  url: "http://54.190.28.10:3000/viewsubmissions/",
   data: dobj,
   contentType: "application/json; charset=utf-8",
-  async: false,
-  cache: true,
-  dataType: "JSON",
+  async: true,
+  crossDomain: true,
+  dataType: "json",
   success: function(data) {
-  console.log("Done",data);
-  student_id = data.username;
-  answer = data.ans;
+	  console.log("Done",data);
+	  student_id = data.username;
+	  answer = data.ans;
 
   var length = data.length;
   var disp = "";
@@ -374,20 +374,3 @@ function getAssignment1(){
 }
 
 
-//Function to view submissions for faculty
-function viewSubmissions() {
-	var inputs = document.getElementById("assignment1");
-
-  var standard = "standard6";
-  var assignment = "assignment1";
-  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
-  dataobj = {
-      "standard": standard,
-      "assnumber": assignment
-  }
-
-  dobj = JSON.stringify(dataobj);
-
-  
-	
-}
