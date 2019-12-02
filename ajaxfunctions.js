@@ -98,12 +98,6 @@ function sendFormDataViewSubmission(){
   var standard = inputs["standardList"].value;
   var assignment = inputs["assignmentList"].value;
   var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
-  dataobj = {
-      "standard": "2",
-      "assnumber": "20"
-  }
-
-  dobj = JSON.stringify(dataobj);
   console.log("Ajax now");
 
   $.ajax({
@@ -111,10 +105,10 @@ function sendFormDataViewSubmission(){
   beforeSend : function(xhr) {
     xhr.setRequestHeader("Authorization" , token);
   },
-  url: "http://54.190.28.10:3000/viewsubmissions/",
-  data: dobj,
+  url: "http://54.190.28.10:3000/viewsubmissions",
   contentType: "application/json; charset=utf-8",
   async: true,
+  data: {standard: standard, assnumber: assignment},
   crossDomain: true,
   dataType: "json",
   success: function(data) {
