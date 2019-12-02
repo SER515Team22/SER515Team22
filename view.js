@@ -87,14 +87,14 @@ function showAssignment() {
     var choose = document.getElementById("choose");
     var assignmentSubmit = document.getElementById("assignmentSubmit");
 
-    answer.style.visibility = 'visible';
+    choose.style.visibility = 'hidden';
     assignmentSubmit.style.visibility = 'hidden';
     questionName.style.visibility = 'hidden';
     pageNum.style.visibility = 'visible';
     nextButton.style.visibility = 'visible';
     question.style.visibility = 'visible';
     sol.style.visibility = 'visible';
-    choose.style.visibility = 'hidden';
+    answer.style.visibility = 'visible';
 
 
 

@@ -39,24 +39,26 @@
     </ul>
   </div>
 </nav>
+      
       <center><h1 id= "questionNo" style ="visibility:hidden;" >Question 1</h1>
 	    	<h2 id = "choose">Choose the Assignment you wish to do: </h2> <!--added to support drop down-->
-        <form ><!--added to support drop down-->
-          
-          <select id="assignmentsName" onclick = "loadAssignments()" ><!--added to support drop down-->
-          
-  </select>
+        
+        <form ><!--added to support drop down--> 
+        <!--<button id = "showAssignments" onclick = "loadAssignments()">Show Assignments</button> use for bug fix --> 
+        <select id="assignmentsName" onclick = "loadAssignments()" ><!--added to support drop down--></select>
+        </form>  
+  
         <h2 id= "question" style ="visibility:hidden;">
 	    		Space for question
 	    	</h2>
-    	</div>
+    	
     	<br><br><br><br><br><br><br><br>
         <h4 id = "sol" style ="visibility:hidden;" >Solution</h4>
         <div class="col-md-12"  id="effect">
             <form>
                 <input type="text" id="answer" placeholder= "Enter your Answer Here" name="Answer" style ="visibility:hidden;"><br>
             </form>
-        
+        </center>
     	<div>
     		<br><br>
             <button class="button col-md-6" onclick="saveExp()" style ="visibility:hidden;">Save</button>
