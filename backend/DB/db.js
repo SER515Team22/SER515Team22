@@ -1,4 +1,5 @@
-
+//  Authors:
+//  1. Idhant Haldankar
 
 const mongoose = require('mongoose');
 mongoose.set('useNewUrlParser', true);
