@@ -1,0 +1,18 @@
+Hi everyone this is team 22 presentation, for our software YoMath.
+
+Our app focus on teaching mathematics in a fun and interactive way. Our target audience is students of standard 1 and standard 4, and faculty to aid in learning.
+
+For a person using portal for the first time user can register on the portal.
+
+<DEMO of registration>
+
+Once registered the user can come back to login.
+
+Based on whether a student or faculty logs in user will be redirected to the required portal.
+
+As a faculty I can post assignments for student and view the submissions done by students.
+
+For standard 1 we have provided simple numeric comparison.
+
+For standard 6 we have provided playground with all basic aritmetic.
+

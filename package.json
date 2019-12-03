@@ -20,12 +20,13 @@
     "nodemon": "^1.19.2"
   },
   "dependencies": {
-    "electron": "^6.0.10",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "mathjs": "^6.2.2",
-    "mongoose": "^5.7.3",
     "bcryptjs": "*",
-    "cancan": "^3.1.0"
+    "body-parser": "^1.19.0",
+    "cancan": "^3.1.0",
+    "electron": "^6.0.10",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mathjs": "^6.2.2",
+    "mongoose": "^5.7.3"
   }
 }

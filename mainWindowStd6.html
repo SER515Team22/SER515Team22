@@ -1,0 +1,178 @@
+<!--Author Name : Prashant Singh -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+  <script>
+  $( function() {
+    // run the currently selected effect
+    function Reset() {
+     
+	  $( ".empty" ).empty();
+    };
+ 
+    $( "#button" ).on( "click", function() {
+      Reset();
+    });
+	
+  });
+ </script>
+
+<title>Playground for Grade 6 Students</title>
+
+</head>
+<body>
+
+    <div style="position: relative; z-index: 5">
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      
+    </div>
+    <ul class="nav navbar-nav">
+      
+      <li><a href="mainWindowStd6.html">Play Ground</a></li>
+      <li><a href="underConstruction6.html">Go to Assignments</a></li>
+<!--       <li><a href="#">User Id</a></li> -->
+      <li><a href="loginIndex.html">Logout</a></li>
+        
+      <p style="position: absolute; right: 50px; top: 20px; font-family: Monotype; font-weight: bold; ">Grade 6 Student portal</p>
+
+    </ul>
+    </div>
+    </nav>
+    </div>
+    
+
+    <div class="split left">
+    	<div>
+    		<h2>Operands</h2>
+        <div class="col-sm-0">
+            <img src="css\images\1.svg" id = "1" class="fill" draggable = "true">
+<!--         </div>
+        <div class="col-sm-0"> -->
+            <img src="css\images\2.svg" id = "2" class="fill" draggable = "true">
+<!--         </div>
+        <div class="col-sm-0"> -->
+            <img src="css\images\3.svg" id = "3" class="fill" draggable = "true">
+        </div>
+        &nbsp;
+        <div class="col-sm-0">
+            <img src="css\images\4.svg" id = "4" class="fill" draggable = "true">
+<!--         </div>
+        <div class="col-sm-0"> -->
+            <img src="css\images\5.svg" id = "5" class="fill" draggable = "true">
+<!--         </div>
+        <div class="col-sm-0"> -->
+            <img src="css\images\6.svg" id = "6" class="fill" draggable = "true">
+        </div>
+        &nbsp;
+        <div class="col-sm-0">
+            <img src="css\images\7.svg" id = "7" class="fill" draggable = "true">
+<!--         </div>
+        <div class="col-sm-0">
+ -->         <img src="css\images\8.svg" id = "8" class="fill" draggable = "true">
+<!--         </div>
+        <div class="col-sm-0"> -->
+            <img src="css\images\9.svg" id = "9" class="fill" draggable = "true">
+        </div>
+        &nbsp;
+        <div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<img src="css\images\0.svg" id = "9" class="fill" draggable = "true">
+        </div>
+<br>
+        <div>
+        	<h2 align="left">Operators</h2>
+        <div>
+			<img id="+" draggable="true" class="fill"  src= "css\images\plus.svg" style = "height: 30px">
+
+			<img id="-" draggable="true" class="fill"  src= "css\images\minus.svg" style = "height: 30px">
+			<img id="(" draggable="true" class="fill"  src= "css\images\open_para.jpeg" style = "height: 30px; width: 20px;">
+			<img id=")" draggable="true" class="fill"  src= "css\images\close_para.jpeg" style = "height: 30px; width: 20px;">
+			<img id="/" draggable="true" class="fill"  src= "css\images\division.svg" style = "height: 30px">
+
+			<img id="*" draggable="true" class="fill"  src= "css\images\multiply.svg" style = "height: 30px">
+        </div>
+
+        </div>
+
+    	</div>
+    
+    </div>
+<!-- Added an empty img tag... It wil get updated once something is dragged on to it.. -->
+    <div class="split right">
+    	<div class="right_text">
+    		<h1>Work Space</h1>
+
+	    	<h4>Instructions </h4>
+	    	<p>
+	    		1) Drag and drop the operands and operators from the side panel to the workspace window <br>
+		    	2) When completed click on the evaluate button to generate the output of espression <br>
+		    	3) If you want to clear last dragged item, click on Clear button <br>
+		    	4) To clear the workspace click on Clear All button
+	    	</p>
+    	</div>
+    	<br><br><br><br><br><br><br><br>
+        <div class="col-md-8" align="center" id="effect">
+        <div class="empty">
+            <img src="css\images\white.jpg" id = "" style="height: 40px; width: 40px;">
+        </div>
+<!--     	</div> -->
+<!--     	<div class="col-md-10"> -->
+    		<div class="empty">
+                <img src="css\images\white.jpg" id = ""  style="height: 40px; width: 40px;">
+            </div>
+<!--     	</div> -->
+<!--     	<div class="col-md-12"> -->
+    		<div class="empty">
+                <img src="css\images\white.jpg" id = "ep1" style="height: 40px; width: 40px;">
+            </div>
+
+			<div class="empty">
+			<img src="css\images\white.jpg" id = "ep1" style="height: 40px; width: 40px;">
+			</div>
+
+			<div class="empty">
+			<img src="css\images\white.jpg" id = "ep1" style="height: 40px; width: 40px;">
+			</div>
+
+            <div class="empty">
+            <img src="css\images\white.jpg" id = "ep1" style="height: 40px; width: 40px;">
+            </div>
+
+            <div class="empty">
+            <img src="css\images\white.jpg" id = "ep1" style="height: 40px; width: 40px;">
+            </div>
+
+            <div class="empty">
+            <img src="css\images\white.jpg" id = "ep1" style="height: 40px; width: 40px;">
+            </div>
+
+    	</div>
+<br><br><br><br><br><br><br><br>
+    	<div>
+    		<button class="button col-md-6" onclick="evalExpr()">Evaluate Expression</button>
+    		<dir class="space"></dir>
+    		<td>
+    		<button id="button" onclick="">Clear All</button>
+    	</div>
+<!-- <br><br><br>
+    	<div>
+    		<button class="disabled_button" >CLear Last</button>
+    	</div> -->
+    </div>
+
+    <!-- <script src="main1.js"></script> -->
+<script src="ajaxfunctions.js"></script>    
+</body>
+</html>

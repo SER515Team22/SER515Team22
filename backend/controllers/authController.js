@@ -1,3 +1,9 @@
+//Authors
+//1. Idhant Haldankar
+//2. Gaytahri Sitaraman
+
+
+
 
 const Users = require('../models/user');
 
@@ -18,6 +24,7 @@ exports.register = (req, res) => {
           username: req.body.username,
           email: req.body.email,
           hash: req.body.password,
+          standard: req.body.standard
         }
         
     );

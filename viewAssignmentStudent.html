@@ -1,0 +1,168 @@
+<!--Author Name : Prashant Singh -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="main1.js"></script>
+	<script src="ajaxfunctions.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+	<meta charset="UTF-8">
+
+	<title>View Assignments</title>
+</head>
+<body>
+	<div style="position: relative; z-index: 5">
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      
+    </div>
+    <ul class="nav navbar-nav">
+      
+      <li><a href="mainWindowStd6.html">Play Ground</a></li>
+      <li><a href="underConstruction6.html">Go to Assignments</a></li>
+      <li><a href="loginIndex.html">Logout</a></li>
+        
+      <p style="position: absolute; right: 50px; top: 20px; font-family: Monotype; font-weight: bold; ">Grade 6 Student portal</p>
+
+    </ul>
+    </div>
+    </nav>
+    </div>
+
+	<div class="split left" style="margin-left: 100px;">
+		<br>
+		<a href="#'" id = "assignment1" onclick="getAssignment1()">Assignment 1</a>
+		<br><br><br><br>
+		<a href = "#" id = "assignment2" onclick="getAssignment2()">Assignment 2</a>
+	</div>
+
+	<div id= "test" class="split right hidden">
+		<p style="margin-top: 30px;">Questions</p>
+		<br><br><br>
+
+		<form id="submitSolution">
+		  <p id="1"> </p>
+		  Answer 1:<br>
+		  <input id="answer1" type="text" name="answer1" value="">
+		  <br>
+		  <br><br>
+		  <p id="2"> </p>
+		  Answer 2:<br>
+		  <input id="answer2" type="text" name="answer2" value="">
+		  <br>
+		  <br><br><br><br>
+		  <p id="3"> </p>
+		  Answer 3:<br>
+		  <input id="answer3" type="text" name="answer3" value="">
+		  <br>
+		  <br>
+
+		  <button type="button" onclick="sendSubmission()">Submit Solution</button>
+		</form> 
+	</div>
+
+	<div id = "test2" class="split right hidden">
+		
+	</div>
+</body>
+
+<script src=ajaxfunctions.js></script>
+<script type="text/javascript">
+   function sendSubmission() {
+	const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY";
+
+	var inputs = document.getElementById("submitSolution").elements;
+	var ques = ["","",""];
+	ques[0] = "What is 1+5";
+	ques[1] = "what is 5*3";
+	ques[2] = "What is 9+4";
+	var ans = ["","",""];
+	ans[0] = inputs["answer1"].value;
+	ans[1] = inputs["answer2"].value;
+	ans[2] = inputs["answer3"].value;
+	data = {
+		"username": "idhant96",
+		"assnumber": "20",
+		"standard": "1",
+		"answers": ans,
+		"questions": ques
+	}
+	var dobj = JSON.stringify(data);
+	$.ajax({
+	type: "POST",
+        url: "http://54.190.28.10:3000/newsubmit",
+	data: dobj,
+	contentType: "application/json; charset=utf-8",
+	async: false,
+	beforeSend : function( xhr ) {
+        xhr.setRequestHeader( "Authorization",access_token );
+    },
+	cache: true,
+	dataType: "JSON",
+	success: function(data) {
+		console.log("post data status ", data);
+	        status = data.status;
+	},
+	error: function (e) {
+		console.log("ERROR: ", e.statusText);
+	}
+    });
+}
+  function getAssignment1(){
+  var standard = "1";
+  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY";
+  console.log("Ajax now");
+
+  $.ajax({
+  type: "GET",
+  beforeSend : function(xhr) {
+    xhr.setRequestHeader("Authorization" , token);
+  },
+  url: "http://54.190.28.10:3000/viewass",
+  contentType: "application/json; charset=utf-8",
+  async: true,
+  data: {standard: standard},
+  crossDomain: true,
+  dataType: "json",
+  success: function(data) {
+	  // console.log("Done",data);
+	  for (var i in data){
+	  	console.log(data[i][0].qsn);
+	  }
+	  
+	  var assignment = data[i][0].qsn;
+
+	  var q1 = assignment[0];
+	  var q2 = assignment[1];
+	  var q3 = assignment[2];
+	  
+
+	  console.log(assignment);
+
+	  $('#test').removeClass('hidden');
+	  $('#1').append(q1);
+	  $('#2').append(q2);
+	  $('#3').append(q3);
+
+	  
+	  /*$('#test2').removeClass('hidden');*/
+	  
+  },
+  error: function (e) {
+  console.log("ERROR: ", e.statusText);
+  }
+  });
+  console.log(standard);
+}
+
+</script>
+</html>
