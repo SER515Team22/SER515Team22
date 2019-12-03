@@ -320,7 +320,7 @@ function postAssignment() {
 	
 
 //Function to post answers - for student
-
+/*
 function sendSubmission() {
 	const access_token = token;
 	var inputs = document.getElementById("submitSolution");
@@ -358,7 +358,7 @@ function sendSubmission() {
 	
 
 }
-
+*/
 
 
 
