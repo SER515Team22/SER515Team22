@@ -16,6 +16,8 @@ mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+
+//posting assignment - faculty
 exports.postass = (req, res) => {
     // todo validate if user is faculty
     let assignments = new Assignments(
@@ -35,7 +37,7 @@ exports.postass = (req, res) => {
     })  
 }
 
-
+//submit assignment - student
 exports.submitass = (req, res) => {
     // todo validate if user is student
     let solutions = new Solutions(
@@ -56,6 +58,7 @@ exports.submitass = (req, res) => {
     })  
 }
 
+//view assignment
 exports.viewass = (req, res) => {
     let assignments = mongoose.model('Assignment');
     assignments.find({std: req.body.standard}, (err, data) => {
@@ -73,6 +76,7 @@ exports.viewass = (req, res) => {
     })
 }
 
+//view submissions for faculty
 exports.viewsubmissions = (req, res) => {
     let assignments = mongoose.model('Solution');
     assignments.find({std: req.body.standard, 
