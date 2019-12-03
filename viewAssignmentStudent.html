@@ -49,7 +49,7 @@
 		<p style="margin-top: 30px;">Questions</p>
 		<br><br><br>
 
-		<form id="submitSolution" onclick="sendSubmission()" >
+		<form id="submitSolution">
 		  <p id="1"> </p>
 		  Answer 1:<br>
 		  <input id="answer1" type="text" name="answer1" value="">
@@ -65,7 +65,7 @@
 		  <input id="answer3" type="text" name="answer3" value="">
 		  <br>
 		  <br>
-		  <input type="submit" value="Submit Solution">
+		  <button type="submit" value="Submit Solution" onclick="sendSubmission()">Submit</button>
 		</form> 
 	</div>
 
@@ -74,11 +74,51 @@
 	</div>
 </body>
 
-
+<script src=ajaxfunctions.js></script>
 <script type="text/javascript">
+   function sendSubmission() {
+	const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY";
+
+	var inputs = document.getElementById("submitSolution").elements;
+	var ques = ["","",""];
+	ques[0] = "What is 1+5";
+	ques[1] = "what is 5*3";
+	ques[2] = "What is 9+4";
+	var ans = ["","",""];
+	ans[0] = inputs["answer1"].value;
+	ans[1] = inputs["answer2"].value;
+	ans[2] = inputs["answer3"].value;
+	data = {
+		"username": "idhant96",
+		"assnumber": "1",
+		"standard": "6",
+		"answers": ans,
+		"questions": ques
+	}
+	var dobj = JSON.stringify(data);
+	$.ajax({
+	type: "POST",
+        url: "http://54.190.28.10:3000/newsubmit",
+	data: dobj,
+	contentType: "application/json; charset=utf-8",
+	async: false,
+	beforeSend : function( xhr ) {
+        xhr.setRequestHeader( "Authorization",access_token );
+    },
+	cache: true,
+	dataType: "JSON",
+	success: function(data) {
+		console.log("post data status ", data);
+	        status = data.status;
+	},
+	error: function (e) {
+		console.log("ERROR: ", e.statusText);
+	}
+    });
+}
   function getAssignment1(){
   var standard = "1";
-  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
+  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY";
   console.log("Ajax now");
 
   $.ajax({
