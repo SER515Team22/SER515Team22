@@ -1,3 +1,6 @@
+//  Authors:
+//  1. Idhant Haldankar
+
 const express = require('express');
 let middleware = require('../middlewares/auth.js');
 const router = express.Router();

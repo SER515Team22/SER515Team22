@@ -4,7 +4,8 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "test": "mocha"
   },
   "keywords": [
     "Electron",
@@ -16,7 +17,10 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "express-generator": "^4.16.1",
+    "mocha": "^6.2.2",
     "nodemon": "^1.19.2"
   },
   "dependencies": {

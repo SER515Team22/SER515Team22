@@ -1,11 +1,12 @@
+//  Authors:
+//  1. Idhant Haldankar
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
 var config = require('../config');
-
-// var uniqueValidator = require('mongoose-unique-validator');
 
 let UserSchema = new Schema({
     type: {type: String, required: true},
@@ -31,7 +32,6 @@ UserSchema.methods.creatAndCompare = (password1, password2, salt) => {
 }
 
 UserSchema.methods.validPassword = function(password) {
-  // console.log(UserSchema.findOne({username: "idhant96"}));
  var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
  return this.hash === hash;
 };
@@ -44,7 +44,8 @@ UserSchema.methods.generateJWT = function(user) {
   return jwt.sign({
     id: user.id,
     username: user.username,
-    exp: parseInt(exp.getTime() / 1000),
+    // exp: parseInt(exp.getTime() / 1000),
+    expiresIn: '365d'
   }, config.secret);
 };
 
@@ -57,8 +58,5 @@ UserSchema.methods.toAuthJSON = function(user){
       type: user.type
     };
   };
-
-
-// UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
 module.exports = mongoose.model('User', UserSchema);
