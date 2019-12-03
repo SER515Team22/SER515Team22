@@ -114,28 +114,6 @@
 <script type="js/main.js"></script>
 <script type="js/post.js"></script>
 <script type="jquery/jquery-3.4.1.min.js"></script>
-<!--
-<script type="text/javascript">
-	$(function() {
-      
-      $('#add_ques').on('click',function(){
-        var post_ques={
-        question1: $question1.val();
-        question2: $question2.val();
-        question3: $question3.val();
-    };
-    $.ajax({
-    type: 'POST',
-    url:/api/post,
-    data: post_ques,
-timestamp:};
-
-    });
-       
-     
-
-}
-
 
 
 </script> -->
@@ -286,12 +264,44 @@ timestamp:};
 
 
        <button type="button" class="btn btn-info" id="getSubmissionDetails" onclick="sendFormDataViewSubmission()">View Submission</button>
+        <div id="submissionTable" class="hidden">
+          <table>
+          <tr>
+            <th style="padding-right: 50px;">Student Username</th>
+            <th style="padding-right: 50px;">Question</th>
+            <th style="padding-right: 50px;">Answer</th>
+          </tr>
+
+          <tr>
+            <td id="std1"></td>
+            <br>
+            <td id="qsn1"></td>
+            <br>
+            <td id="ans1"></td>
+          </tr>
+
+          <tr>
+            <td id="std2"></td>
+            <br>
+            <td id="qsn2"></td>
+            <br>
+            <td id="ans2"></td>
+          </tr>
+
+          <tr>
+            <td id="std3"></td>
+            <br>
+            <td id="qsn3"></td>
+            <br>
+            <td id="ans3"></td>
+          </tr>
+
+          </table>
+        </div>
 
     </form>
 
 </div>
-         
-          
         </div>
        
       </div>
@@ -325,5 +335,63 @@ timestamp:};
 
 
 </body>
+
+<script type="text/javascript">
+  function sendFormDataViewSubmission(){
+  var inputs = document.getElementById("submissionView").elements;
+  var standard = inputs["standardList"].value;
+  var assignment = inputs["assignmentList"].value;
+  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
+  console.log("Ajax now");
+  var standard = "2";
+  var assignment = "20";
+  $.ajax({
+  type: "GET",
+  beforeSend : function(xhr) {
+    xhr.setRequestHeader("Authorization" , token);
+  },
+  url: "http://54.190.28.10:3000/viewsubmissions",
+  contentType: "application/json; charset=utf-8",
+  async: true,
+  data: {standard: standard, assnumber: assignment},
+  crossDomain: true,
+  dataType: "json",
+  success: function(data) {
+    console.log("Done",data);
+  for ( var p in data) {
+    console.log(data[p]);
+  }
+  var disp = "";
+  console.log("Inside sucess");
+  console.log("length",data.data.length);
+  if (data){
+    for (var i=0; i<data.data.length;i++){
+      console.log("Yo data",data.data[i].username);
+      if(data.data[i].username && data.data[i].ans){
+  console.log("Hello all",);
+        disp = data.data[i].username;
+        ans = data.data[i].ans;
+        qsn = data.data[i].qsn;
+  console.log("Display",disp);
+      }
+    }
+
+    if (disp != ""){
+      console.log("Hello submission");
+      
+      $('#submissionTable').removeClass('hidden');
+      $("#std1").append(disp);
+      $('#ans1').append(ans);
+      $('#qsn1').append(qsn);
+    }
+  }
+  },
+  error: function (e) {
+  console.log("ERROR: ", e.statusText);
+  }
+  });
+  console.log(standard,assignment);
+}
+</script>
 
 </html>
