@@ -99,7 +99,8 @@ function sendFormDataViewSubmission(){
   var assignment = inputs["assignmentList"].value;
   var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYjc5NjkxN2UxMTBhNGI3OTVmYTFjMyIsInVzZXJuYW1lIjoiaWRoYW50OTYiLCJleHAiOjE1Nzk0MTAwNDAsImlhdCI6MTU3NDIyNjA0MH0.Ey5KJFlPrf3eoXWrsO2MMKykHyFy2bxnvZz4TL8UAtY"
   console.log("Ajax now");
-
+  var standard = "2";
+  var assignment = "20";
   $.ajax({
   type: "GET",
   beforeSend : function(xhr) {
@@ -113,20 +114,24 @@ function sendFormDataViewSubmission(){
   dataType: "json",
   success: function(data) {
 	  console.log("Done",data);
-	  student_id = data.username;
-	  answer = data.ans;
-
-  var length = data.length;
+  for ( var p in data) {
+	  console.log(data[p]);
+  }
   var disp = "";
-
-  if (length > 0){
-    for (var i = 0 ; i<length; i++){
-      if(data[i].username && data[i].ans){
-        disp += "<tr><td>" + data[i].username + "</td><td>" + data[i].ans + "</td><tr>";
+  console.log("Inside sucess");
+  console.log("length",data.data.length);
+  if (data){
+    for (var i=0; i<data.data.length;i++){
+      console.log("Yo data",data.data[i].username);
+      if(data.data[i].username && data.data[i].ans){
+	console.log("Hello all",);
+        disp += "<tr><td>" + data.data[i].username + "</td><td>" + data.data[i].ans + "</td><tr>";
+	console.log("Display",disp);
       }
     }
 
     if (disp != ""){
+      console.log("Hello submission");
       $("#submissionTable").append(disp).removeClass("hidden");
     }
   }
@@ -313,6 +318,56 @@ function postAssignment() {
     });
 }    
 	
+
+//Function to post answers - for student
+
+function sendSubmission() {
+	const access_token = token;
+	var inputs = document.getElementById("submitSolution");
+	var ques = ["What is 1+5","what is 5*3","What is 9+4"];
+	var ans[0] = inputs["answer1"].value;
+	var ans[1] = inputs["answer2"].value;
+	var ans[2] = inputs["answer3"].value;
+	var data = {
+		"username": "idhant96",
+		"assnumber": "1",
+		"standard": "6",
+		"answers": ans,
+		"questions": ques
+	}
+	var dobj = JSON.stringify(data);
+	$.ajax({
+	type: "POST",
+        url: "http://54.190.28.10:3000/newsubmit",
+	data: dobj,
+	contentType: "application/json; charset=utf-8",
+	async: false,
+	beforeSend : function( xhr ) {
+        xhr.setRequestHeader( "Authorization",access_token );
+    },
+	cache: true,
+	dataType: "JSON",
+	success: function(data) {
+		console.log("post data status ", data);
+	        status = data.status;
+	},
+	error: function (e) {
+		console.log("ERROR: ", e.statusText);
+	}
+    });
+	
+
+}
+
+
+
+
+
+
+
+
+
+
 
 //Function to view assignment for students
 function getAssignment1(){
