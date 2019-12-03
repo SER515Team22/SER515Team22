@@ -1,9 +1,11 @@
 //Author Name : Prashant Singh
 
 var global_value;
+var buffer = '';
 var dynamic_src = '';
 var expression = '';
 var URL = '';
+var global_test;
 let fills = document.querySelectorAll('.fill');
 let empties = document.querySelectorAll('.empty');
 
@@ -48,16 +50,25 @@ function dragLeave() {
 function dragDrop(e) {
   this.className = 'empty';
   console.log(expression);
+  buffer = global_value;
   expression = expression + global_value;
   console.log(expression);
 
   let img = this.getElementsByTagName('img')[0];
+  global_test = img;
   console.log(img);
   img.src = dynamic_src;
   
   // console.log(global_value);
   // this.append(fills[global_value-1]);
 }
+
+function clearLast() {
+  var temp = "";
+  global_test.src = temp;
+  expression = expression.slice(0,expression.length-1);
+  
+} 
 
 
 function evaluateExp() {
