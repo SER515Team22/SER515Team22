@@ -323,12 +323,16 @@ function postAssignment() {
 /*
 function sendSubmission() {
 	const access_token = token;
-	var inputs = document.getElementById("submitSolution");
-	var ques = ["What is 1+5","what is 5*3","What is 9+4"];
-	var ans[0] = inputs["answer1"].value;
-	var ans[1] = inputs["answer2"].value;
-	var ans[2] = inputs["answer3"].value;
-	var data = {
+	var inputs = document.getElementById("submitSolution").elements;
+	var ques = ["","",""];
+	ques[0] = "What is 1+5";
+	ques[1] = "what is 5*3";
+	ques[2] = "What is 9+4";
+	var ans = ["","",""];
+	ans[0] = inputs["answer1"].value;
+	ans[1] = inputs["answer2"].value;
+	ans[2] = inputs["answer3"].value;
+	data = {
 		"username": "idhant96",
 		"assnumber": "1",
 		"standard": "6",
@@ -358,6 +362,7 @@ function sendSubmission() {
 	
 
 }
+
 */
 
 
@@ -366,8 +371,7 @@ function sendSubmission() {
 
 
 
-
-
+/*
 
 //Function to view assignment for students
 function getAssignment1(){
@@ -422,4 +426,4 @@ function getAssignment1(){
   console.log(standard,assignment);
 }
 
-
+*/
