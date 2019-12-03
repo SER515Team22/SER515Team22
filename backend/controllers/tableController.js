@@ -1,4 +1,6 @@
-// const mongoose = require('mongoose');
+//  Authors:
+//  1. Idhant Haldankar
+
 const Solutions = require('../models/solutions');
 
 
