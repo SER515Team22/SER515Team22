@@ -23,7 +23,7 @@
     "bcryptjs": "*",
     "body-parser": "^1.19.0",
     "cancan": "^3.1.0",
-    "electron": "^6.0.10",
+    "electron": "^15.5.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "mathjs": "^6.2.2",
